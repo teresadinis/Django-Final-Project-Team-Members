@@ -1,0 +1,9 @@
+<h1>App Todo</h1>
+ 
+<h2>{{ tarefas | length }} tarefas por realizar!</h2> <!-- tarefas = Tarefa.objects.all() no ficheiro todo.views.py -->
+ 
+{% for x in tarefas %} <!-- tarefas = Tarefa.objects.all() no ficheiro todo.views.py -->
+ 
+  <p>{{ x.id }} - {{ x.titulo }} </p>
+ 
+{% endfor %}

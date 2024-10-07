@@ -1,0 +1,5 @@
+{% if nome %} <!-- condição que permite que caso a veriável 'nome' seja vazia ou esteja mal escrita, devolve a mensagem 'Olá' -->
+  <h1>welcome!  {{ nome }}</h1>
+{% else %}
+  <h1>olá!</h1>
+{% endif %}
