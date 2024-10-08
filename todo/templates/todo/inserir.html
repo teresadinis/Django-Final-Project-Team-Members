@@ -1,0 +1,8 @@
+<h1>Inserir tarefa</h1>
+
+<form method="post">
+    <!-- mecanismo de segurança: envio de um código especifico do ip para entrar na pagina html-->
+    {% csrf_token %}
+    {{ formulario.as_p }} <!-- tarefas = formulario = TarefaForm() no ficheiro todo.views.py -->
+    <p><button>Enviar</button></p>
+</form>
