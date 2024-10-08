@@ -1,0 +1,10 @@
+<h1>alterar tarefa</h1>
+ 
+<form method="post">
+ 
+    {% csrf_token %}
+ 
+    {{ formulario.as_p }}
+ 
+    <p><button>alterar</button></p>
+</form>

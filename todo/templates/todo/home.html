@@ -4,9 +4,13 @@
  
 {% for x in tarefas %} <!-- tarefas = Tarefa.objects.all() no ficheiro todo.views.py -->
  
-  <p>{{ x.id }} - {{ x.titulo }} </p>
+  <p>{{ x.id }} - {{ x.titulo }} 
+    <a href="{% url 'todo:eliminar_tarefa' x.id %}">apagar</a>
+    &nbsp;|
+    <a href="{% url 'todo:alterar_tarefa' x.id %}">alterar</a>
+  </p>
  
 {% endfor %}
 <br>
+<a href="{% url 'todo:inserir_tarefa' %}">Adicionar tarefa</a>
 <!--- <a href="http://127.0.0.1:8000/todo/inserir/">Adicionar tarefa</a> -->
-<a href="% url 'todo:inserir_tarefa' %">Adicionar tarefa</a>
