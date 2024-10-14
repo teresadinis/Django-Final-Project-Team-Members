@@ -19,6 +19,7 @@ from django.urls import include, path
 
 urlpatterns = [ # tem como resultado o url http://127.0.0.1:8000/app1/
     path('app1/', include('app1.urls')),
+    path('listacompras/', include('listacompras.urls')),
     path('todo/', include('todo.urls')),
     path('admin/', admin.site.urls),
 ]
