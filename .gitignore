@@ -1,0 +1,3 @@
+#vou indicar que ficheiros ou tipo de ficheiros o git vai ignorar
+
+*.zip
