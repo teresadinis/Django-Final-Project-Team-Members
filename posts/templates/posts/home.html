@@ -1,0 +1,26 @@
+<h2>App Posts</h2>
+<style>
+.post {border:1px solid; padding:1em; width: 50vw; margin: 1em auto;}
+.post img { width: 100%;}
+.post h3 {text-align: center; text-transform: uppercase;}
+.post .icon {width: 24px; margin:5px;}
+</style>
+{% load static %}
+
+<a href="{% url 'posts:add' %}">adicionar post</a>
+
+{% for x in posts %}
+   <div class="post">
+       <h3>{{x.titulo}}</h3>
+       <img src="{{x.imagem.url}}" alt="">
+       <a href="{% url 'posts:delete' x.id %}">
+         <img src="{% static 'x-circle.svg' %}" class="icon">
+       </a>
+   </div>
+{% endfor %}
+
+<!--
+editar
+base.html
+foreign key
+-->

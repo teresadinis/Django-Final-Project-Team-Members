@@ -24,7 +24,8 @@
     </li>
 {% endfor %}
 </ul>
-<fieldset style="width: 300px;"> 
+<fieldset style="width: 300px;">
+    <legend>novo</legend>
     <form action="" method="post">
         {% csrf_token %}
         {{formulario.as_p}}

@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [ # tem como resultado o url http://127.0.0.1:8000/app1/
     path('app1/', include('app1.urls')),
     path('listacompras/', include('listacompras.urls')),
+    path('posts/',include('posts.urls')),
     path('todo/', include('todo.urls')),
     path('admin/', admin.site.urls),
-]
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

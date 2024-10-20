@@ -1,0 +1,10 @@
+<h3>adicionar post</h3>
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <p><button>enviar</button></p>
+</form>
