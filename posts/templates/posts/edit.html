@@ -1,5 +1,10 @@
 <h3>editar post</h3>
 
+{% load static %}
+
+<a href="{% url 'posts:home' %}">
+    <img src="{% static 'return_button.svg' %}" class="icon"></a>
+<br>
 <form method="post" enctype="multipart/form-data">
 
     {% csrf_token %}

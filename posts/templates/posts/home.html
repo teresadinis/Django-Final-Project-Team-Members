@@ -1,35 +1,60 @@
-<h2>App Posts</h2>
+<div style="text-align: center;">
+  <h1 id="inicio">App Posts</h1>
+</div>
 <style>
-.post {border:1px solid; padding:1em; width: 25vw; margin: 1em auto;}
+.post {border:1px solid; padding:1em; width: 37vw; margin: 1em auto;}
 .post img { width: 100%;}
 .post h3 {text-align: center; text-transform: uppercase;}
 .post .icon {width: 24px; margin:5px;}
 .post-icon {text-align: center;}
+.image-grid {
+  display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Define duas colunas de largura igual */
+    gap: 35px; /* Espaçamento entre os elementos da grade */
+    max-width: 1000px; /* Define uma largura máxima para o contêiner */
+    margin: 0 auto; /* Centraliza o contêiner na página */
+}
 </style>
+
+<!-- Carrega os arquivos estáticos -->
 {% load static %}
 
-<a href="{% url 'posts:add' %}">adicionar post</a>
+<!-- Botão para adicionar post -->
+<div style="text-align: center; color: grey;">
+  <a href="{% url 'posts:add' %}">Adicionar Post</a>
+</div>
+<br>
 
-{% for x in posts %}
-   <div class="post">
-      <h3>{{x.titulo}}</h3>
+<!-- Inicia o contêiner de grade -->
+<div class="image-grid">
+  <!-- Loop para exibir cada post -->
+  {% for x in posts %}
+    <div class="post">
+      <h3>{{ x.titulo }}</h3>
       <div class="post-icon">
         <a href="{% url 'posts:details' x.id %}">
-          <img src="{{x.imagem.url}}" alt="">
+          <img src="{{ x.imagem.url }}" title="Clique para saber mais!" alt="Imagem do post">
         </a>
         <a href="{% url 'posts:delete' x.id %}">
-          <img src="{% static 'delete_button.svg' %}" class="icon"></a>
-  
+          <img src="{% static 'delete_button.svg' %}" class="icon" alt="Deletar post"></a>
         <a href="{% url 'posts:edit' x.id %}">
-          <img src="{% static 'edit_button.svg' %}" class="icon">
-        </a> 
+          <img src="{% static 'edit_button.svg' %}" class="icon" alt="Editar post">
+        </a>
       </div>
-   </div>
-   <br><br>
-{% endfor %}
+    </div>
+  {% endfor %}
+</div>
+<!-- Fim do contêiner de grade -->
+<br><br>
+<!-- Botão de voltar ao início -->
+<div style="text-align: center;">
+  <a href="#inicio"><img src="{% static 'top_button.svg' %}" class="icon" alt="Voltar ao início">Voltar ao Início</a>
+</div>
 
-<!--
-editar
-base.html
-foreign key
--->
+<br>
+<hr>
+
+<!-- Rodapé -->
+<div class="footer-text" style="text-align: center;">
+  TERESA DINIS &COPY; 2024
+</div>
