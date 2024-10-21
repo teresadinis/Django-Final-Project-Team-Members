@@ -11,12 +11,18 @@
 
 {% for x in posts %}
    <div class="post">
-       <h3>{{x.titulo}}</h3>
-       <img src="{{x.imagem.url}}" alt="">
-       <a href="{% url 'posts:delete' x.id %}">
-         <img src="{% static 'x-circle.svg' %}" class="icon">
-       </a>
+      <h3>{{x.titulo}}</h3>
+      <a href="{% url 'posts:details' x.id %}">
+        <img src="{{x.image.url}}" alt="">
+      </a>
+      <a href="{% url 'posts:delete' x.id %}">
+        <img src="{% static 'delete_button.svg' %}" class="icon"></a>
+
+      <a href="{% url 'posts:edit' x.id %}">
+        <img src="{% static 'edit_button.svg' %}" class="icon">
+      </a> 
    </div>
+
 {% endfor %}
 
 <!--
