@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .forms import PostForm
+from .forms import CategoriaForm, PostForm
 from .models import Post
 
 # Create your views here.
@@ -39,3 +39,10 @@ def details(request,id):
     # obter dados do post com primary key igual ao parâmetro id
     post = Post.objects.get(pk=id)
     return render(request,'posts/details.html',{'post':post})
+
+def addcategory(request):
+    form = CategoriaForm()
+    if request.method=="POST":
+        form = CategoriaForm(request.POST)
+        form.save()
+    return render(request,'post/addcategory.html',{"form":form})
