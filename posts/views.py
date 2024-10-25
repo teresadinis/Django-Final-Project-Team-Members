@@ -45,4 +45,5 @@ def addcategory(request):
     if request.method=="POST":
         form = CategoriaForm(request.POST)
         form.save()
+        return redirect ("posts:home")
     return render(request,'posts/addcategory.html',{"form":form})
