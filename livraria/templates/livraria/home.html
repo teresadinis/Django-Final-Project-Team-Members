@@ -1,6 +1,19 @@
 <!--permite trabalhar nas funcionalidades-->
 {% extends 'livraria/base.html' %}
 
+
 {% block conteudo %}
-Olá livraria!
+    <style>
+        main {display: flex; background-color: white;gap: 1em; justify-content: space-evenly; flex-wrap: wrap;}
+        .livro {border: 1px solid blue; width: 30vw; display: flex; flex-direction: column; justify-content: center;}
+        .livro img {width: 300px; height: 450px; object-fit: cover; border: 1px solid red; margin: 0 auto;}
+    </style>
+    {% for livro in livros %}
+    <div class="livro" style="text-align: center">
+        <h2>{{livro.nome}}</h2>
+        {% if livro.imagem %}
+            <img src="{{livro.imagem.url}}" alt="" width="200">
+        {% endif %}
+    </div>
+    {% endfor %}
 {% endblock %}

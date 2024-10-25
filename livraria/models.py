@@ -13,8 +13,6 @@ class Livro(models.Model):
     FORMATOS = [
         ('ebook','ebook'),
         ('paperback','paperback'),
-        ('30x30', 'Album 30x30'),
-        ('100x100', 'Album 30x30'),
     ]
 
     nome = models.CharField(max_length=100)

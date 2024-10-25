@@ -1,0 +1,14 @@
+{% extends 'livraria/base.html' %}
+
+{% block conteudo %}
+    <style>
+        label {width: 150px; display: inline-block;}
+    </style>
+    <h3>Inserir novo livro</h3>
+    <br>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <p><button>adicionar</button></p>
+    </form>
+{% endblock %}
