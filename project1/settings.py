@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'listacompras',
     'posts',
     'livraria',
-    'membros'
+    'membros',
 ]
 
 MIDDLEWARE = [

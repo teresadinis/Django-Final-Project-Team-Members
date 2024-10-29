@@ -1,0 +1,49 @@
+{% extends 'membros/base.html' %}
+
+{% block conteudo %}
+    <style>
+    label {width: 110px; display:inline-block;}
+    .icon {width: 24px; margin:5px;}
+    </style>
+
+    {% load static %}
+    <a href="{% url 'membros:home' %}">
+        <img src="{% static 'return_button.svg' %}" class="icon">
+    </a>
+    <h2>Atualizar Registo de Membro</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="campo-com-link">
+            {{ form.categoria.label_tag }}
+            {{ form.categoria }}
+            <a href="{% url 'membros:addcategory' %}">Adicionar Categoria</a> <br><br>
+        </div>
+            {{ form.nome_completo.label_tag }}
+            {{ form.nome_completo }} <br><br>
+            {{ form.estado.label_tag }}
+            {{ form.estado }} <br><br>
+            {{ form.email.label_tag }}
+            {{ form.email }} <br><br>
+            {{ form.foto.label_tag }}
+            {{ form.foto }} <br><br>
+            {{ form.grupo.label_tag }}
+            {{ form.grupo }} <br><br>
+            {{ form.instituicao.label_tag }}
+            {{ form.instituicao }} <br><br>
+            {{ form.departamento.label_tag }}
+            {{ form.departamento }} <br><br>
+            {{ form.orcid.label_tag }}
+            {{ form.orcid }} <br><br>
+            {{ form.sci_vitae.label_tag }}
+            {{ form.sci_vitae }} <br><br>
+            {{ form.data_entrada.label_tag }}
+            {{ form.data_entrada }} <br><br>
+            {{ form.data_saida.label_tag }}
+            {{ form.data_saida }} <br><br>
+
+    <p><button>editar</button></p>
+    </form>
+
+{% endblock %}

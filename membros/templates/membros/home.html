@@ -1,0 +1,67 @@
+{% extends 'membros/base.html' %}
+
+{% block conteudo %}
+    <style>
+        .opcao {
+            border: 1px solid white;
+            background-color: white;
+            width: 230px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px;
+        }
+        .opcao img {width: 64px; height: 64px; margin: 0 auto;}
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 2fr);
+            gap: 35px;
+            max-width: 1100px;
+            margin: 10 auto;
+        }
+        .image-grid h3 {
+            color: white;
+            border: solid black;
+            background-color: black;
+            padding: 20px;
+            height: auto;
+            margin-top: 0px;
+        }
+
+    </style>
+    <div class="image-grid">
+        
+        {% for opcao in opcoes %}
+            <div style="text-align: center;">
+                {% if opcao.imagem %}
+                <div class="opcao">
+                    {% if opcao.id == 1 %}
+                        <a href="{% url 'membros:list_details' %}">
+                            <img src="{{ opcao.imagem.url }}" alt="" width="64">
+                        </a>
+                    {% endif %}
+                    {% if opcao.id == 2 %}
+                        <a href="{% url 'membros:add' %}">
+                            <img src="{{ opcao.imagem.url }}" alt="" width="64">
+                        </a>
+                    {% endif %}
+                    {% if opcao.id == 3 %}
+                        <a href="{% url 'membros:list_edit' %}">
+                            <img src="{{ opcao.imagem.url }}" alt="" width="64">
+                        </a>
+                    {% endif %}
+                    {% if opcao.id == 4 %}
+                        <a href="{% url 'membros:list_del' %}">
+                            <img src="{{ opcao.imagem.url }}" alt="" width="64">
+                        </a>
+                    {% endif %}
+                    </div>
+                {% endif %}
+                <h3>{{opcao.nome}}</h3>
+            </div>
+        {% endfor %}
+        
+    </div>
+{% endblock %}

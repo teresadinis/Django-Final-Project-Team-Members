@@ -23,7 +23,7 @@ urlpatterns = [ # tem como resultado o url http://127.0.0.1:8000/
     path('app1/', include('app1.urls')),
     path('listacompras/', include('listacompras.urls')),
     path('livraria/', include('livraria.urls')),
-    path('membros',include('membros.urls')),
+    path('membros/',include('membros.urls')),
     path('posts/',include('posts.urls')),
     path('todo/', include('todo.urls')),
     path('admin/', admin.site.urls),

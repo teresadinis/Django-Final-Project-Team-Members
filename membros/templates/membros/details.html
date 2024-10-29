@@ -1,0 +1,29 @@
+{% extends 'membros/base.html' %}
+
+{% block conteudo %}
+
+<style>
+    label {width: 110px; display:inline-block;}
+    .icon {width: 24px; margin: 5px;}
+    .img {width: 300px; height: 267px;}
+</style>
+
+{% load static %}
+    <a href="{% url 'membros:list_details' %}">
+        <img src="{% static 'return_button.svg' %}" class="icon">
+    </a><br>
+
+    <img src="{{ membros.foto.url }}" class="img" alt="">
+    <h2>{{membros.nome_completo}}</h2>
+    <b>id#:</b> {{ membros.id }}<br><br>
+    <b>Estado:</b> {{ membros.estado }}<br><br>
+    <b>Categoria:</b> {{ membros.categoria }}<br><br>
+    <b>Email:</b> {{ membros.email }}<br><br>
+    <b>Grupo:</b> {{ membros.grupo }}<br><br>
+    <b>Instituição:</b> {{ membros.instituicao }}<br><br>
+    <b>Departamento:</b> {{ membros.departamento }}<br><br>
+    <b>Orcid:</b> {{ membros.orcid }}<br><br>
+    <b>Ciência Vitae:</b> {{ membros.sci_vitae }}<br><br>
+    <b>Data de entrada:</b> {{ membros.data_entrada }}<br><br>
+    <b>Data de saída:</b> {{ membros.data_saida }}<br><br>
+{% endblock %}

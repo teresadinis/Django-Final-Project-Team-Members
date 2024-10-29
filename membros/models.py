@@ -1,6 +1,12 @@
 from django.db import models
 
 # Create your models here.
+class Menu(models.Model):
+    nome = models.CharField(max_length=100)
+    imagem = models.ImageField(upload_to='imagens_menu/', blank=True, null=True)
+
+    def __str__(self) -> str:
+        return self.nome.upper()
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=50)
@@ -32,11 +38,11 @@ class Membro(models.Model):
     departamento = models.CharField(max_length=50, blank=True, null=True)
     orcid = models.URLField(blank=True, null=True)
     sci_vitae = models.URLField(blank=True, null=True)
-    data_entrada = models.DateField(auto_now_add=True,blank=True, null=True)
-    data_saida = models.DateField(blank=True, null=True)
+    data_entrada = models.DateTimeField(blank=True, null=True)
+    data_saida = models.DateTimeField(blank=True, null=True)
 
     def __str__(self) -> str:
-        return self.nome_completo
+        return self.nome_completo.capitalize()
     
 class Investigador(models.Model):
 
@@ -46,11 +52,11 @@ class Investigador(models.Model):
     ]
 
     integrado_FCT = models.CharField(max_length=10, choices=ESTADOS, default='sim', blank=True, null=True)
-    data_contrato = models.DateField(blank=True, null=True)
+    data_contrato = models.DateTimeField(blank=True, null=True)
     membro = models.ForeignKey(Membro, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
-        return self.membro.nome_completo
+        return self.membro.nome_completo.capitalize()
 
 class Aluno(models.Model):
 
@@ -61,16 +67,16 @@ class Aluno(models.Model):
 
     num_mec = models.PositiveSmallIntegerField(unique=True)
     matriculado = models.CharField(max_length=10, choices=ESTADOS, default='ativo', blank=True, null=True)
-    data_matricula = models.DateField(blank=True, null=True)
+    data_matricula = models.DateTimeField(blank=True, null=True)
     membro = models.ForeignKey(Membro, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
-        return self.membro.nome_completo
+        return self.membro.nome_completo.capitalize()
 
 class Tese(models.Model):
     titulo = models.CharField(max_length=200)
     main_orientador = models.CharField(max_length=200)
-    data_defesa = models.DateField(blank=True, null=True)
+    data_defesa = models.DateTimeField(blank=True, null=True)
     aluno = models.ForeignKey(Aluno, models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
