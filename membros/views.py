@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from .forms import *
 from .models import *
+from django.db.models import Q
 
 # Create your views here.
 
@@ -56,3 +57,20 @@ def delete(request,id):
     membro = Membro.objects.filter(pk=id)
     membro.delete()
     return redirect("membros:list_del")
+
+def pesquisa(request):
+    membros = []
+    if request.method == "POST":
+        campo = request.POST.get("campo", "")
+        
+        # Filtrar pelo campo 'campo' em múltiplos atributos do modelo
+        # Q() permite combinar filtros usando operadores | (OR) e & (AND)
+        membros = Membro.objects.filter(
+            Q(nome_completo__icontains=campo) |
+            Q(email__icontains=campo) |
+            Q(instituicao__icontains=campo) |
+            Q(grupo__icontains=campo)|
+            Q(categoria__nome__icontains=campo)
+        )
+        
+    return render(request, "membros/pesquisa.html", {'membros': membros})
