@@ -13,5 +13,9 @@ urlpatterns = [
     path('edit/<int:id>', views.edit, name='edit'),
     path('list3/',views.list_del, name='list_del'),
     path('del/<int:id>',views.delete, name='delete'),
-    path('pesquisa', views.pesquisa, name='pesquisa'),
+    path('pesquisa1', views.search_details, name='search_details'),
+    path('pesquisa2', views.search_edit, name='search_edit'),
+    path('pesquisa3', views.search_del, name='search_del'),
+    path('login',views.login_user, name='login_user'),
+    path('logout', views.logout_user, name='logout_user'),
 ]

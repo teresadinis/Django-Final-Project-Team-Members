@@ -34,33 +34,45 @@
     <div class="image-grid">
         
         {% for opcao in opcoes %}
+            {% if opcao.id == 1%}
             <div style="text-align: center;">
                 {% if opcao.imagem %}
-                <div class="opcao">
-                    {% if opcao.id == 1 %}
-                        <a href="{% url 'membros:list_details' %}">
-                            <img src="{{ opcao.imagem.url }}" alt="" width="64">
-                        </a>
-                    {% endif %}
-                    {% if opcao.id == 2 %}
-                        <a href="{% url 'membros:add' %}">
-                            <img src="{{ opcao.imagem.url }}" alt="" width="64">
-                        </a>
-                    {% endif %}
-                    {% if opcao.id == 3 %}
-                        <a href="{% url 'membros:list_edit' %}">
-                            <img src="{{ opcao.imagem.url }}" alt="" width="64">
-                        </a>
-                    {% endif %}
-                    {% if opcao.id == 4 %}
-                        <a href="{% url 'membros:list_del' %}">
-                            <img src="{{ opcao.imagem.url }}" alt="" width="64">
-                        </a>
-                    {% endif %}
+                    <div class="opcao">
+                        {% if opcao.id == 1 %}
+                            <a href="{% url 'membros:list_details' %}">
+                                <img src="{{ opcao.imagem.url }}" alt="" title="Consultar Membros" width="64">
+                            </a>
                     </div>
                 {% endif %}
                 <h3>{{opcao.nome}}</h3>
             </div>
+            {% endif %}
+            {% elif opcao.id != 1%}
+                {% if request.user.is_authenticated %}
+                    <div style="text-align: center;">
+                        {% if opcao.imagem %}
+                        <div class="opcao">
+                            {% if opcao.id == 2 %}
+                                <a href="{% url 'membros:add' %}">
+                                    <img src="{{ opcao.imagem.url }}" alt="" title="Registar Membro" width="64">
+                                </a>
+                            {% endif %}
+                            {% if opcao.id == 3 %}
+                                <a href="{% url 'membros:list_edit' %}">
+                                    <img src="{{ opcao.imagem.url }}" alt="" title="Atualizar Membro" width="64">
+                                </a>
+                            {% endif %}
+                                {% if opcao.id == 4 %}
+                                    <a href="{% url 'membros:list_del' %}">
+                                        <img src="{{ opcao.imagem.url }}" alt="" title="Excluir Membros" width="64">
+                                    </a>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                        <h3>{{opcao.nome}}</h3>
+                    </div>
+                {% endif %}
+            {% endif %}
         {% endfor %}
         
     </div>

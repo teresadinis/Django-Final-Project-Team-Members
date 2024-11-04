@@ -1,0 +1,19 @@
+{% extends 'membros/base.html' %}
+
+{% block conteudo %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <p>
+        username: <input type="text" name="username">
+    </p>
+    <p>
+        password: <input type="password" name="password">
+    </p>
+    <p><button>entrar</button></p>
+    {% for message in messages %}
+    <p style="color:red">{{message}}</p>
+    {% endfor %}
+</form>
+
+{% endblock %}

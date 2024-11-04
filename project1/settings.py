@@ -86,6 +86,17 @@ DATABASES = {
     }
 }
 
+# Criar nova BD com o msql, depois escrever no terminal pip install mysqlclient, python manage.py makemigrations e python manage.py migrate, python manage.py createsuperuser
+"""DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "projetodjango",
+        "USER": "root",
+        "PASSWORD": "password",
+        "HOST": "127.0.0.1", #endereço do servidor
+        "PORT": "3306",
+    }
+}"""
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

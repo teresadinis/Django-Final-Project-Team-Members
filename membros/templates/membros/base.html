@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestão de Equipa</title>
-    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <title>Gestão de Equipas</title>
+    <link rel="shortcut icon" href="{% static 'icon.ico' %}" type="image/x-icon">
     <style>
         body {background-color: rgb(222, 224, 223); font-family: calibri;}
-        header {height: 15vh; color: black}
+        header {height: 15vh; color: black; display: flex; align-items: center; justify-content: space-between;}
         footer {
             position: fixed;
             bottom: 0;
@@ -23,16 +24,27 @@
 <body>
     <header>
         <h1> Bem-vindo(a) à Plataforma de Gestão da sua Equipa</h1>
+        <nav>
+            
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'membros:home' %}" style="margin-right: 10px;"><img src="{% static 'home_button.png' %}" class="icon" title="home"></a>
+            <a href="{% url 'membros:logout_user' %}" style="margin-right: 105px;"><img src="{% static 'logout_button.png' %}" class="icon" title="logout">logout</a>
+            
+            {% else %}
+            <a href="{% url 'membros:home' %}" style="margin-right: 10px;"><img src="{% static 'home_button.png' %}" class="icon" title="home"></a>
+            <a href="{% url 'membros:login_user' %}" style="margin-right: 105px;"><img src="{% static 'login_button.png' %}" class="icon" title="login">login</a>
+            {% endif %}
+        </nav>
     </header>
     <nav>
-
+        <br><br>
     </nav>
     <main>
         {% block conteudo %}
           
         {% endblock %}
     </main>
-    <br>
+    <br><br><br>
     <footer>
         TERESA DINIS &COPY; 2024
     </footer>
