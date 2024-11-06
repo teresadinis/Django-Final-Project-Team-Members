@@ -1,0 +1,22 @@
+{% extends 'membros/base.html' %}
+
+{% block conteudo %}
+
+    <style>
+    label {width: 110px; display:inline-block;}
+    .icon {width: 24px; margin:5px;}
+    </style>
+
+    {% load static %}
+    <a href="{% url 'membros:list_edit' %}">
+        <img src="{% static 'return_button.svg' %}" class="icon">
+    </a>
+    <h2>Novo Membro - Aluno</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+    <p><button>submeter</button></p>
+    </form>
+    
+{% endblock %}

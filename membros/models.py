@@ -25,7 +25,7 @@ class Membro(models.Model):
         ('grupo1', 'grupo1'),
         ('grupo2', 'grupo2'),
         ('grupo3', 'grupo3'),
-        ('grupo4', 'grupo3'),
+        ('grupo4', 'grupo4'),
     ]
 
     nome_completo = models.CharField(max_length=200)
@@ -38,8 +38,8 @@ class Membro(models.Model):
     departamento = models.CharField(max_length=50, blank=True, null=True)
     orcid = models.URLField(blank=True, null=True)
     sci_vitae = models.URLField(blank=True, null=True)
-    data_entrada = models.DateTimeField(blank=True, null=True)
-    data_saida = models.DateTimeField(blank=True, null=True)
+    data_entrada = models.DateField(blank=True, null=True)
+    data_saida = models.DateField(blank=True, null=True)
 
     def __str__(self) -> str:
         return self.nome_completo.capitalize()
@@ -51,8 +51,8 @@ class Investigador(models.Model):
     ('não', 'não')
     ]
 
-    integrado_FCT = models.CharField(max_length=10, choices=ESTADOS, default='sim', blank=True, null=True)
-    data_contrato = models.DateTimeField(blank=True, null=True)
+    integrado_fct = models.CharField(max_length=10, choices=ESTADOS, default='sim', blank=True, null=True)
+    data_contrato = models.DateField(blank=True, null=True)
     membro = models.ForeignKey(Membro, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
@@ -67,7 +67,7 @@ class Aluno(models.Model):
 
     num_mec = models.PositiveSmallIntegerField(unique=True)
     matriculado = models.CharField(max_length=10, choices=ESTADOS, default='ativo', blank=True, null=True)
-    data_matricula = models.DateTimeField(blank=True, null=True)
+    data_matricula = models.DateField(blank=True, null=True)
     membro = models.ForeignKey(Membro, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
@@ -76,7 +76,7 @@ class Aluno(models.Model):
 class Tese(models.Model):
     titulo = models.CharField(max_length=200)
     main_orientador = models.CharField(max_length=200)
-    data_defesa = models.DateTimeField(blank=True, null=True)
+    data_defesa = models.DateField(blank=True, null=True)
     aluno = models.ForeignKey(Aluno, models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
