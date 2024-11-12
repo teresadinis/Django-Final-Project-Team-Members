@@ -16,7 +16,7 @@
     <ul>
         {% for membro in membros %}
             <li>
-                <b>id#{{ membro.id }}</b> | {{ membro.nome_completo }} - {{ membro.categoria }} | <a href="{% url 'membros:delete' membro.id %}">Eliminar registo</a>
+                <b>id#{{ membro.id }}</b> | {{ membro.nome_completo }} - {{ membro.categoria }} - {{ membro.grupo }} | <a href="{% url 'membros:delete' membro.id %}">Eliminar registo</a>
             </li>
         {% endfor %}
     </ul>

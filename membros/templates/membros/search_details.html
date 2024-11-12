@@ -4,6 +4,7 @@
 
 <style>
     .icon {width: 24px; margin: 5px;}
+    .campo-pesquisa {width: 300px;}
 </style>
 
 {% load static %}
@@ -14,7 +15,7 @@
     <form action="" method="post">
         {% csrf_token %}
         <p>
-            Termo de pesquisa: <input type="text" name="campo">
+            Termo de pesquisa: <input type="text" name="campo" placeholder="nome, email, instituição, grupo ou categoria" class="campo-pesquisa">
         </p>
         <p><button>pesquisar</button></p>
     </form>
@@ -23,7 +24,7 @@
         <ul>
             {% for membro in membros %}
                 <li>
-                    <b>id#{{ membro.id }}</b> | {{ membro.nome_completo }} - {{ membro.categoria }} | <a href="{% url 'membros:details' membro.id %}">Ver detalhes</a>
+                    <b>id#{{ membro.id }}</b> | {{ membro.nome_completo }} - {{ membro.categoria }} - {{ membro.grupo }} | <a href="{% url 'membros:details' membro.id %}">Ver detalhes</a>
                 </li>
             {% endfor %}
         </ul>

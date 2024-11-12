@@ -12,8 +12,11 @@
     <a href="{% url 'membros:list_details' %}">
         <img src="{% static 'return_button.svg' %}" class="icon">
     </a><br>
-
-        <img src="{{ membros.foto.url }}" class="img" alt="">
+        {% if membros.foto %}
+            <img src="{{ membros.foto.url }}" class="img" alt="">
+        {% else %}
+            <img src="{% static 'nophoto.png' %}" alt="" width="250">
+        {% endif %}
         <h2>{{membros.nome_completo}}</h2>
         <b>id#:</b> {{ membros.id }}<br><br>
         <b>Estado:</b> {{ membros.estado }}<br><br>

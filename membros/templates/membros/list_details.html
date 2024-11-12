@@ -16,7 +16,7 @@
     <ul>
         {% for membro in membros %}
             <li>
-                <b>id#{{ membro.id }}</b> | {{ membro.nome_completo }} - {{ membro.categoria }} | <a href="{% url 'membros:details' membro.id %}">Ver detalhes</a>
+                <b>id#{{ membro.id }}</b> | {{ membro.nome_completo }} - {{ membro.categoria }} - {{ membro.grupo }} | <a href="{% url 'membros:details' membro.id %}">Ver detalhes</a>
             </li>
         {% endfor %}
     </ul>

@@ -74,7 +74,7 @@ class Aluno(models.Model):
         return self.membro.nome_completo.capitalize()
 
 class Tese(models.Model):
-    titulo = models.CharField(max_length=200)
+    titulo = models.CharField(max_length=200, default='Por definir')
     main_orientador = models.CharField(max_length=200)
     data_defesa = models.DateField(blank=True, null=True)
     aluno = models.ForeignKey(Aluno, models.CASCADE, blank=True, null=True)
