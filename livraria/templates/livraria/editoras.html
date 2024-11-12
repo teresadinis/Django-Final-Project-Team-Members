@@ -1,0 +1,23 @@
+{% extends 'livraria/base.html' %}
+{% load static %}
+{% block conteudo %}
+
+  <h3>Editoras</h3>
+
+  {% for editora in object_list %}
+
+    <p>{{editora.id}} - 
+      <a href="{% url 'livraria:pesquisa_livros_por_editora' editora.id %}"> 
+        {{editora.nome}}
+      </a> 
+
+      {% if user.is_authenticated %}
+        <a href="{% url 'livraria:elimina_editora' editora.id %}">
+          <img src="{% static 'x-circle.svg' %}">
+        </a>
+      {% endif %}
+    </p>
+
+  {% endfor %}
+  
+{% endblock %}

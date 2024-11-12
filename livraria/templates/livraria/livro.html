@@ -1,0 +1,23 @@
+{% extends 'livraria/base.html' %}
+
+
+{% block conteudo %}
+
+ <div class="livro">
+    <h3>{{livro.nome|upper}}</h3>
+    {% if livro.imagem %}
+        <img src="{{livro.imagem.url}}" alt="" width="250">
+    {% endif %}
+    <br>
+    <p>preço: {{livro.preco|default_if_none:"sem preço!"}}</p>
+    <p>ISBN: {{livro.isbn|default_if_none:""}}</p>
+    <p>
+       editora: 
+        <a href="{% url 'livraria:pesquisa_livros_por_editora' livro.editora_id %}">
+           {{livro.editora}}
+        </a>
+    </p>
+
+ </div>
+
+{% endblock %}

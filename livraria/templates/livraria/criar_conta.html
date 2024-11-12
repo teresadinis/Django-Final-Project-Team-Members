@@ -1,0 +1,15 @@
+{% extends 'livraria/base.html' %}
+
+
+{% block conteudo %}
+
+<form action="" method="post">
+
+   {% csrf_token %}
+
+   {{form.as_p}}
+   <p><button>criar conta</button></p>
+
+</form>
+
+{% endblock %}

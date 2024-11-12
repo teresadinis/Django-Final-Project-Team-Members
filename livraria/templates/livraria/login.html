@@ -1,0 +1,20 @@
+{% extends 'livraria/base.html' %}
+
+{% block conteudo %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <p>
+        username: <input type="text" name="username" required>
+    </p>
+    <p>
+        password: <input type="password" name="password" required>
+    </p>
+    <p><button>entrar</button></p>
+
+    {% for message in messages %}
+        <p style="color:orange">{{message}}</p>
+    {% endfor %}
+</form>
+
+{% endblock %}

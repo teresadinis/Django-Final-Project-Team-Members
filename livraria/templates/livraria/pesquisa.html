@@ -1,0 +1,24 @@
+{% extends "livraria/base.html" %}
+
+{% block conteudo %}
+
+   <form action="" method="post">
+      {% csrf_token %}
+      <p>
+        nome do livro ou da editora: <input type="text" name="campo">
+        <button>pesquisa</button>
+      </p>
+   </form>
+
+   <div id="resultados">
+      {% for livro in livros %}
+         <h4>{{livro.nome}} 
+              <br>
+              <img src="{{livro.imagem.url}}" width="100">
+         </h4>
+      {% endfor %}
+   </div>
+
+{% endblock %}
+
+

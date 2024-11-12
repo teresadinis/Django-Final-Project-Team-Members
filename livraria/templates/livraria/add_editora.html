@@ -1,0 +1,14 @@
+{% extends 'livraria/base.html' %}
+
+{% block conteudo %}
+    <h3>nova editora </h3>
+
+    <form method="post">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <p><button>adicionar</button></p>
+    </form>
+
+{% endblock %}

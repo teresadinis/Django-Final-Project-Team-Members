@@ -1,24 +1,91 @@
-<!--permite trabalhar no design-->
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livraria</title>
     <style>
-        * {box-sizing: border-box;}
-        body {background-color: cadetblue;}
-        header {height: 15vh;}
-        main {height: 70vh; border: 2px solid; padding: 2em;}
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: cadetblue;
+        }
+
+        header {
+            height: 15vh;
+            display: flex;
+            align-items: center;
+        }
+
+        main {
+            min-height: 70vh;
+            border: 2px solid;
+            padding: 2em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 1.8em;
+            color: black;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .campopequeno {
+            width: 100px;
+            color: green
+        }
+
+        input[type=number] {
+            font-weight: bold;
+        }
     </style>
+    {% block header %}
+
+    {% endblock %}
 </head>
+
 <body>
     <header>
         <h1>Livraria</h1>
         <nav>
-            {% block conteudo %}
-
-            {% endblock %}
+            {% if request.user.is_authenticated and request.user.is_staff %}
+                <a href="{% url 'livraria:home' %}">home</a>
+                <a href="{% url 'livraria:editoras' %}">editoras</a>
+                <a href="{% url 'livraria:pesquisa' %}">pesquisa</a>
+                <a href="{% url 'livraria:compra' %}">compra</a>
+                <a href="{% url 'livraria:compras' %}">compras</a>
+                <a href="{% url 'livraria:add' %}">adicionar livro</a>
+                <a href="{% url 'livraria:editora_add' %}">adicionar editora</a>
+                <a href="{% url 'livraria:logout_user' %}">sair</a>
+                <a style="text-decoration: none;">olá {{request.user.username}}!</a>
+            {% elif request.user.is_authenticated  %}
+                <a href="{% url 'livraria:home' %}">home</a>
+                <a href="{% url 'livraria:editoras' %}">editoras</a>
+                <a href="{% url 'livraria:pesquisa' %}">pesquisa</a>
+                <a href="{% url 'livraria:compra' %}">compra</a>
+                <a href="{% url 'livraria:compras' %}">compras</a>
+                <a href="{% url 'livraria:logout_user' %}">sair</a>
+                <a style="text-decoration: none;">olá {{request.user.username}}!</a>
+            {% else %}
+                <a href="{% url 'livraria:home' %}">home</a>
+                <a href="{% url 'livraria:editoras' %}">editoras</a>
+                <a href="{% url 'livraria:pesquisa' %}">pesquisa</a>
+                <a href="{% url 'livraria:login_user' %}">entrar</a>
+                <a href="{% url 'livraria:criar_conta' %}">criar conta</a>
+            {% endif%}
         </nav>
     </header>
     <main>
@@ -27,4 +94,5 @@
         {% endblock %}
     </main>
 </body>
+
 </html>

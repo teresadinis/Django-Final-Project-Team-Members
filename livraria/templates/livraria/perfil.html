@@ -1,0 +1,12 @@
+{% extends 'livraria/base.html' %}
+
+{% block conteudo %}
+
+<h4>dados da conta</h4>
+
+<p>ID: {{ request.user.id}}</p>
+<p>username: {{ request.user.username}}</p>
+<p>email: {{request.user.email}} </p>
+
+
+{% endblock %}
