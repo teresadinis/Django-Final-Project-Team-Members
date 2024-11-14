@@ -24,8 +24,11 @@ SECRET_KEY = 'django-insecure-cv(kwo5+7^go8jm*vb)ps68x+w4a)v^+b@785tmwjn)zz*j6kv
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False # colocar neste quando a app for para o ar
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] # aceita tudo
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.mysite.com']
 
 
 # Application definition
@@ -140,8 +143,12 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    #BASE_DIR / "static", # ativar quando a app for para o ar
     #"/var/www/static/",
 ]
 MEDIA_URL=""
 MEDIA_ROOT=""
+
+import os
+# STATIC_ROOT = "/home/myusername/myproject/static"
+#STATIC_ROOT = os.path.join(BASE_DIR, "static")
