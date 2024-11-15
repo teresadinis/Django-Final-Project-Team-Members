@@ -143,7 +143,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    #BASE_DIR / "static", # ativar quando a app for para o ar
+    BASE_DIR / "static", # ativar quando a app for para o ar
     #"/var/www/static/",
 ]
 MEDIA_URL=""
